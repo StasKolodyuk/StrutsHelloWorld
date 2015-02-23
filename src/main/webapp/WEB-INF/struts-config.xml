@@ -8,17 +8,22 @@
         <form-bean name="CustomerForm" type="com.epam.strutshelloworld.controller.form.CustomerForm"/>
     </form-beans>
     <global-forwards>
-        <forward name="mainpage" path="index.jsp" />
+        <forward name="mainpage" path="/index.jsp" />
+        <forward name="customerDetailsPage" path="/gotoCustomerDetails.do" /> 
     </global-forwards>
     <action-mappings>
+        <action path="/gotoCustomerDetails" 
+              parameter="/pages/customerDetails.jsp"  
+              type="org.apache.struts.actions.ForwardAction" />
         <action path="/submitCustomerForm"
         type="com.epam.strutshelloworld.controller.action.CustomerAction"
         name="CustomerForm"
         scope="request"
         validate="true"
-        input="pages/customerDetails.jsp">
-            <forward name="success" path="pages/success.jsp" />
-            <forward name="failure" path="pages/failure.jsp" />
+        cancellable="true"
+        input="/pages/customerDetails.jsp">
+            <forward name="success" path="/pages/success.jsp" />
+            <forward name="failure" path="/pages/failure.jsp" />
         </action>
     </action-mappings>
     <controller processorClass="org.apache.struts.action.RequestProcessor"/>

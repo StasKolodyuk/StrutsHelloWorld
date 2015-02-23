@@ -1,7 +1,13 @@
 
 package com.epam.strutshelloworld.controller.form;
 
+import javax.servlet.http.HttpServletRequest;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 
 
 public class CustomerForm extends ActionForm {
@@ -17,6 +23,17 @@ public class CustomerForm extends ActionForm {
     public CustomerForm(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+    
+    
+
+    @Override
+    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+        ActionErrors errors = new ActionErrors(); 
+        if (firstName == null || firstName.trim().equals("")) { 
+            errors.add("firstName", new ActionMessage("error.cust.firstname.null")); 
+        } 
+        return errors;
     }
 
     public String getFirstName() {
