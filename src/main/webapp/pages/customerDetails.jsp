@@ -9,13 +9,15 @@
 
     <body> 
         <html:errors/> 
-        <html:form action="/submitCustomerForm"> 
-            <bean:message key="prompt.customer.firstname"/>: 
-            <html:text property="firstName" size="16" maxlength="16"/> 
+        <html:form action="/addNewsForm"> 
+            Title: 
+            <html:text property="title" size="16" maxlength="16"/> 
             <BR> 
-            <bean:message key="prompt.customer.lastname"/>: 
-            <html:text property="lastName" size="16" maxlength="16"/> 
+            Brief
+            <html:text property="brief" size="16" maxlength="16"/> 
             <BR> 
+            Content:
+            <html:textarea property="content" />
             <html:submit> 
                 <bean:message key="button.save"/> 
             </html:submit> 

@@ -11,15 +11,9 @@ import java.util.List;
 public class POJONewsManager implements INewsManager {
     
     private INewsDAO newsDAO;
-    private ConnectionPool connectionPool;
 
-    public POJONewsManager(INewsDAO newsDAO, ConnectionPool connectionPool) {
+    public POJONewsManager(INewsDAO newsDAO) {
         this.newsDAO = newsDAO;
-        this.connectionPool = connectionPool;
-    }
-
-    POJONewsManager() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override

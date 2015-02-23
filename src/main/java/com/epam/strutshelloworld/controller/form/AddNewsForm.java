@@ -1,12 +1,15 @@
 
 package com.epam.strutshelloworld.controller.form;
 
+import com.epam.strutshelloworld.model.entity.News;
 import java.util.Date;
 import org.apache.struts.action.ActionForm;
+import org.springframework.beans.BeanUtils;
 
 
 public class AddNewsForm extends ActionForm {
     
+    private long id;
     private Date date;
     private String title;
     private String brief;
@@ -17,6 +20,12 @@ public class AddNewsForm extends ActionForm {
         title = "";
         brief = "";
         content = "";
+    }
+    
+    public News buildNews() {
+        News news = new News();
+        BeanUtils.copyProperties(this, news);
+        return news;
     }
 
     public Date getDate() {

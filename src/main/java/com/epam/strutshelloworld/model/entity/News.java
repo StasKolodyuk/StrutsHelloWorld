@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class News {
     
+    private long id;
     private Date date;
     private String title;
     private String brief;
