@@ -8,9 +8,14 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 
 public class CustomerAction extends Action {
+    
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, 

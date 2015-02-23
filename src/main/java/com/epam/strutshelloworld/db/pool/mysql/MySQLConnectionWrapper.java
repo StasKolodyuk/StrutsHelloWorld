@@ -1,8 +1,8 @@
 
-package by.bsu.kolodyuk.bettingapp.db.pool.mysql;
+package com.epam.strutshelloworld.db.pool.mysql;
 
-import by.bsu.kolodyuk.bettingapp.exception.DatabaseException;
-import by.bsu.kolodyuk.bettingapp.db.pool.ConnectionWrapper;
+import com.epam.strutshelloworld.db.DatabaseException;
+import com.epam.strutshelloworld.db.pool.ConnectionWrapper;
 import java.sql.Connection;
 import java.sql.SQLException;
 

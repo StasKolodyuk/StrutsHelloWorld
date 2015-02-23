@@ -1,7 +1,7 @@
 
 package com.epam.strutshelloworld.db.pool;
 
-import by.bsu.kolodyuk.bettingapp.db.pool.ConnectionWrapper;
+
 import com.epam.strutshelloworld.db.DatabaseException;
 
 

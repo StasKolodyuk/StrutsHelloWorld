@@ -1,7 +1,7 @@
 
-package by.bsu.kolodyuk.bettingapp.db.pool;
+package com.epam.strutshelloworld.db.pool;
 
-import by.bsu.kolodyuk.bettingapp.exception.DatabaseException;
+import com.epam.strutshelloworld.db.DatabaseException;
 
 
 public abstract class ConnectionWrapper<T> {

@@ -14,18 +14,24 @@
     <action-mappings>
         <action path="/gotoCustomerDetails" 
               parameter="/pages/customerDetails.jsp"  
-              type="org.apache.struts.actions.ForwardAction" />
+              type="org.apache.struts.actions.ForwardAction" /> 
+        
         <action path="/submitCustomerForm"
-        type="com.epam.strutshelloworld.controller.action.CustomerAction"
-        name="CustomerForm"
-        scope="request"
-        validate="true"
-        cancellable="true"
-        input="/pages/customerDetails.jsp">
+            type="com.epam.strutshelloworld.controller.action.CustomerAction"
+            name="CustomerForm"
+            scope="request"
+            validate="true"
+            cancellable="true"
+            input="/pages/customerDetails.jsp">
             <forward name="success" path="/pages/success.jsp" />
             <forward name="failure" path="/pages/failure.jsp" />
         </action>
+        
     </action-mappings>
-    <controller processorClass="org.apache.struts.action.RequestProcessor"/>
+    <controller>
+        <set-property property="processorClass"
+                value="org.springframework.web.struts.DelegatingRequestProcessor"/>
+    </controller>
     <message-resources parameter="messages"/>
+    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn"/>
 </struts-config>
