@@ -1,9 +1,8 @@
 
-package com.epam.strutshelloworld.db.dao.mysql;
+package com.epam.strutshelloworld.db.dao;
 
-import com.epam.strutshelloworld.db.dao.INewsDAO;
 import com.epam.strutshelloworld.db.pool.ConnectionWrapper;
-import com.epam.strutshelloworld.db.pool.mysql.MySQLConnectionPool;
+import com.epam.strutshelloworld.db.pool.MySQLConnectionPool;
 import com.epam.strutshelloworld.model.entity.News;
 import java.util.List;
 
@@ -19,9 +18,9 @@ public class MySQLNewsDAO implements INewsDAO {
 
     @Override
     public List<News> findAllNews() {
-        ConnectionWrapper connectionWrapper = connectionPool.getConnection();
+        ConnectionWrapper connectionWrapper = connectionPool.getConnectionWrapper();
         
-        connectionPool.releaseConnection(connectionWrapper);
+        connectionPool.releaseConnectionWrapper(connectionWrapper);
         return null;
     }
 
@@ -32,7 +31,7 @@ public class MySQLNewsDAO implements INewsDAO {
 
     @Override
     public void addNews(News news) {
-        connectionPool.getConnection().getConnection();
+        connectionPool.getConnectionWrapper().getConnection();
         System.out.println("Adding News");
     }
 

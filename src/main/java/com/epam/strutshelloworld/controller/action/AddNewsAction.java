@@ -2,10 +2,12 @@
 package com.epam.strutshelloworld.controller.action;
 
 import com.epam.strutshelloworld.controller.form.AddNewsForm;
+import com.epam.strutshelloworld.db.pool.MySQLConnectionPool;
 import com.epam.strutshelloworld.model.businesslogic.INewsManager;
 import com.epam.strutshelloworld.model.entity.News;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -13,6 +15,8 @@ import org.apache.struts.action.ActionMapping;
 
 
 public class AddNewsAction extends Action {
+    
+    private static final Logger LOGGER = Logger.getLogger(AddNewsAction.class);
     
     private INewsManager newsManager;
 
@@ -29,6 +33,8 @@ public class AddNewsAction extends Action {
         AddNewsForm addNewsForm = (AddNewsForm)form;
         News news = addNewsForm.buildNews();
         newsManager.addNews(news);
+        System.out.println("heekrleknrlekwn");
+        LOGGER.info("lktnklrtkrnkjrtkkj");
         return mapping.findForward("mainpage");
     }
     

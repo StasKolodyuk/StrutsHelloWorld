@@ -8,17 +8,17 @@
         <property name="newsManager" ref="newsManager" />
     </bean>
     
-    <bean name="dbConnector" class="com.epam.strutshelloworld.db.pool.mysql.DBConnector">
+    <bean name="dbConnector" class="com.epam.strutshelloworld.db.pool.DBConnector">
         <property name="url" value="jdbc:mysql://localhost:3306/betting_db" />
         <property name="user" value="root" />
         <property name="password" value="Greendayrocks1"/>
     </bean>
     
-    <bean name="connectionPool" class="com.epam.strutshelloworld.db.pool.mysql.MySQLConnectionPool" init-method="initConnections" destroy-method="close">
+    <bean name="connectionPool" class="com.epam.strutshelloworld.db.pool.MySQLConnectionPool" init-method="initConnections" destroy-method="close">
         <property name="dbConnector" ref="dbConnector" />
     </bean>
     
-    <bean name="newsDAO" class="com.epam.strutshelloworld.db.dao.mysql.MySQLNewsDAO">
+    <bean name="newsDAO" class="com.epam.strutshelloworld.db.dao.MySQLNewsDAO">
         <constructor-arg ref="connectionPool" />
     </bean>
     

@@ -13,7 +13,7 @@
     </global-forwards>
     <action-mappings>
         <action path="/gotoCustomerDetails" 
-              parameter="/pages/customerDetails.jsp"  
+              parameter="/addNews.page"  
               type="org.apache.struts.actions.ForwardAction" /> 
         
         <action path="/addNewsForm"
@@ -21,7 +21,7 @@
             name="addNewsForm"
             scope="request"
             validate="true"
-            input="/pages/customerDetails.jsp">
+            input="success">
             <set-property property="cancellable" value="true"/>
             <forward name="success" path="/pages/success.jsp" />
             <forward name="failure" path="/pages/failure.jsp" />
@@ -30,8 +30,13 @@
     </action-mappings>
     <controller>
         <set-property property="processorClass"
-                value="org.springframework.web.struts.DelegatingRequestProcessor"/>
+                value="org.springframework.web.struts.DelegatingTilesRequestProcessor"/>
     </controller>
     <message-resources parameter="messages"/>
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn"/>
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config"  
+                      value="/WEB-INF/tiles-defs.xml" /> 
+        <set-property property="moduleAware" value="true"/> 
+    </plug-in>
 </struts-config>

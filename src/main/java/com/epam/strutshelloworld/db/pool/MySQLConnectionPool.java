@@ -1,9 +1,7 @@
 
-package com.epam.strutshelloworld.db.pool.mysql;
+package com.epam.strutshelloworld.db.pool;
 
 import com.epam.strutshelloworld.db.DatabaseException;
-import com.epam.strutshelloworld.db.pool.ConnectionPool;
-import com.epam.strutshelloworld.db.pool.ConnectionWrapper;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -13,8 +11,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import org.apache.log4j.Logger;
 
-public class MySQLConnectionPool implements ConnectionPool<Connection> {
+public class MySQLConnectionPool implements IConnectionPool<Connection> {
+    
+    private static final Logger LOGGER = Logger.getLogger(MySQLConnectionPool.class);
     
     private static final int POOL_CAPACITY = 10;
     private static final int POOL_START_SIZE = 3;
@@ -52,7 +53,7 @@ public class MySQLConnectionPool implements ConnectionPool<Connection> {
     }
     
     @Override
-    public ConnectionWrapper<Connection> getConnection() {
+    public ConnectionWrapper<Connection> getConnectionWrapper() {
         try {
             if(!enabled) {
                 throw new DatabaseException("Connection pool is disabled");
@@ -75,7 +76,7 @@ public class MySQLConnectionPool implements ConnectionPool<Connection> {
     }
     
     @Override
-    public void releaseConnection(ConnectionWrapper<Connection> connection) {
+    public void releaseConnectionWrapper(ConnectionWrapper<Connection> connection) {
         usedConnections.remove(connection.getConnection());
         pool.offer(connection.getConnection());
     }
@@ -86,11 +87,11 @@ public class MySQLConnectionPool implements ConnectionPool<Connection> {
         try {
             Thread.sleep(MAX_CLOSING_TIME_MILLIS);
         } catch (InterruptedException ex) {
-            //LOGGER.error("Closing connection pool thread was suddenly interrupted", ex);
+            LOGGER.error("Closing connection pool thread was suddenly interrupted", ex);
         }
         Iterator<Connection> usedConnectionsIterator = usedConnections.iterator();
         while(usedConnectionsIterator.hasNext()) {
-            releaseConnection(new MySQLConnectionWrapper(usedConnectionsIterator.next()));
+            releaseConnectionWrapper(new MySQLConnectionWrapper(usedConnectionsIterator.next()));
         }
         Iterator<Connection> poolIterator = pool.iterator();
         while(poolIterator.hasNext()) {
@@ -102,7 +103,7 @@ public class MySQLConnectionPool implements ConnectionPool<Connection> {
         try {
             connection.close();
         } catch (SQLException e) {
-            //LOGGER.error("Closing a connection failed", e);
+            LOGGER.error("Closing a connection failed", e);
         }
     }
     

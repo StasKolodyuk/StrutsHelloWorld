@@ -1,5 +1,5 @@
 
-package com.epam.strutshelloworld.db.pool.mysql;
+package com.epam.strutshelloworld.db.pool;
 
 import com.epam.strutshelloworld.db.DatabaseException;
 import com.mysql.jdbc.Driver;
