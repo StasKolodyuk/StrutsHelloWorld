@@ -76,6 +76,12 @@
             <version>11.2.0</version>
         </dependency>
         
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>orai18n</artifactId>
+            <version>11.2.0</version>
+        </dependency>
+        
     </dependencies>
 
     <build>

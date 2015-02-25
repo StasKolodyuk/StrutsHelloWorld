@@ -5,6 +5,7 @@ import com.epam.strutshelloworld.db.DatabaseException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Locale;
 import oracle.jdbc.driver.OracleDriver;
 
 
@@ -16,6 +17,7 @@ public class DBConnector {
 
     public DBConnector() {
         try {
+            //Locale.setDefault(Locale.ENGLISH);
             DriverManager.registerDriver(new OracleDriver());
         } catch (SQLException e) {
             throw new DatabaseException(e);
@@ -48,6 +50,7 @@ public class DBConnector {
     
     public Connection getConnection() {
         try {
+            Locale.setDefault(Locale.ENGLISH);
             return DriverManager.getConnection(url, user, password);
         } catch(SQLException e) {
             throw new DatabaseException(e);
