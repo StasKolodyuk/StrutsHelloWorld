@@ -2,7 +2,6 @@
 package com.epam.strutshelloworld.controller.action;
 
 import com.epam.strutshelloworld.controller.form.AddNewsForm;
-import com.epam.strutshelloworld.db.pool.MySQLConnectionPool;
 import com.epam.strutshelloworld.model.businesslogic.INewsManager;
 import com.epam.strutshelloworld.model.entity.News;
 import javax.servlet.http.HttpServletRequest;
@@ -33,8 +32,6 @@ public class AddNewsAction extends Action {
         AddNewsForm addNewsForm = (AddNewsForm)form;
         News news = addNewsForm.buildNews();
         newsManager.addNews(news);
-        System.out.println("heekrleknrlekwn");
-        LOGGER.info("lktnklrtkrnkjrtkkj");
         return mapping.findForward("mainpage");
     }
     

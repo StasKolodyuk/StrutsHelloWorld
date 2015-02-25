@@ -2,10 +2,10 @@
 package com.epam.strutshelloworld.db.pool;
 
 import com.epam.strutshelloworld.db.DatabaseException;
-import com.mysql.jdbc.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import oracle.jdbc.driver.OracleDriver;
 
 
 public class DBConnector {
@@ -16,7 +16,7 @@ public class DBConnector {
 
     public DBConnector() {
         try {
-            DriverManager.registerDriver(new Driver());
+            DriverManager.registerDriver(new OracleDriver());
         } catch (SQLException e) {
             throw new DatabaseException(e);
         }

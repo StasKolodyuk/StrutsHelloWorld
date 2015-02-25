@@ -3,15 +3,15 @@
 "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
 "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
 <tiles-definitions>
-    <definition name="base.definition" template="/pages/layout/classic.jsp">
+    <definition name="base.definition" template="/pages/layouts/classic.jsp">
         <put name="title" value="" />
-        <put name="header" value="/pages/common/header.jsp" />
-        <put name="sidebar" value="/pages/common/sidebar.jsp" />
+        <put name="header" value="/pages/tiles/common/header.jsp" />
+        <put name="sidebar" value="/pages/tiles/common/sidebar.jsp" />
         <put name="body" value="" />
-        <put name="footer" value="/pages/common/footer.jsp" />
+        <put name="footer" value="/pages/tiles/common/footer.jsp" />
     </definition>
     <definition name="/addNews.page" extends="base.definition">
         <put name="title" value="Add News" />
-        <put name="body" value="/pages/addNews.jsp" />
+        <put name="body" value="/pages/tiles/addNews.jsp" />
     </definition>
 </tiles-definitions>

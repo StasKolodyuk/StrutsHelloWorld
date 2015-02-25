@@ -7,9 +7,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 
-public class MySQLConnectionWrapper extends ConnectionWrapper<Connection> {
+public class OracleConnectionWrapper extends ConnectionWrapper<Connection> {
 
-    public MySQLConnectionWrapper(Connection connection) {
+    public OracleConnectionWrapper(Connection connection) {
         super(connection);
     }
 

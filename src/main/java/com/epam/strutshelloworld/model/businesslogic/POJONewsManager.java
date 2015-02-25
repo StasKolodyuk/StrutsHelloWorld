@@ -2,7 +2,6 @@
 package com.epam.strutshelloworld.model.businesslogic;
 
 import com.epam.strutshelloworld.db.dao.INewsDAO;
-import com.epam.strutshelloworld.db.pool.IConnectionPool;
 import com.epam.strutshelloworld.model.entity.News;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ public class POJONewsManager implements INewsManager {
     
     @Override
     public void addNews(News news) {
-        
+        newsDAO.addNews(news);
     }
 
     @Override

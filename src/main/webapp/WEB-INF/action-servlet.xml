@@ -9,16 +9,16 @@
     </bean>
     
     <bean name="dbConnector" class="com.epam.strutshelloworld.db.pool.DBConnector">
-        <property name="url" value="jdbc:mysql://localhost:3306/betting_db" />
-        <property name="user" value="root" />
-        <property name="password" value="Greendayrocks1"/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521/xe" />
+        <property name="user" value="SYSTEM" />
+        <property name="password" value="root"/>
     </bean>
     
-    <bean name="connectionPool" class="com.epam.strutshelloworld.db.pool.MySQLConnectionPool" init-method="initConnections" destroy-method="close">
+    <bean name="connectionPool" class="com.epam.strutshelloworld.db.pool.OracleConnectionPool" init-method="initConnections" destroy-method="close">
         <property name="dbConnector" ref="dbConnector" />
     </bean>
     
-    <bean name="newsDAO" class="com.epam.strutshelloworld.db.dao.MySQLNewsDAO">
+    <bean name="newsDAO" class="com.epam.strutshelloworld.db.dao.OracleNewsDAO">
         <constructor-arg ref="connectionPool" />
     </bean>
     

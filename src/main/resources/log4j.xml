@@ -13,7 +13,7 @@
         </layout>
     </appender>
     <root>
-        <priority value="debug"/>
+        <priority value="info"/>
         <appender-ref ref="FileLog" />
         <appender-ref ref="ConsoleLog" />
     </root>

@@ -13,9 +13,9 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import org.apache.log4j.Logger;
 
-public class MySQLConnectionPool implements IConnectionPool<Connection> {
+public class OracleConnectionPool implements IConnectionPool<Connection> {
     
-    private static final Logger LOGGER = Logger.getLogger(MySQLConnectionPool.class);
+    private static final Logger LOGGER = Logger.getLogger(OracleConnectionPool.class);
     
     private static final int POOL_CAPACITY = 10;
     private static final int POOL_START_SIZE = 3;
@@ -29,7 +29,7 @@ public class MySQLConnectionPool implements IConnectionPool<Connection> {
     private boolean enabled;
     private DBConnector dbConnector;
 
-    private MySQLConnectionPool() throws DatabaseException {
+    private OracleConnectionPool() throws DatabaseException {
         enabled = true;
         pool = new ArrayBlockingQueue<>(POOL_CAPACITY);
         usedConnections = new ArrayBlockingQueue<>(POOL_CAPACITY);
@@ -67,7 +67,7 @@ public class MySQLConnectionPool implements IConnectionPool<Connection> {
                 }
             }
             usedConnections.offer(connection);
-            return new MySQLConnectionWrapper(connection);
+            return new OracleConnectionWrapper(connection);
         } catch(InterruptedException e) {
             throw new DatabaseException(e);
         } finally {
@@ -91,7 +91,7 @@ public class MySQLConnectionPool implements IConnectionPool<Connection> {
         }
         Iterator<Connection> usedConnectionsIterator = usedConnections.iterator();
         while(usedConnectionsIterator.hasNext()) {
-            releaseConnectionWrapper(new MySQLConnectionWrapper(usedConnectionsIterator.next()));
+            releaseConnectionWrapper(new OracleConnectionWrapper(usedConnectionsIterator.next()));
         }
         Iterator<Connection> poolIterator = pool.iterator();
         while(poolIterator.hasNext()) {
