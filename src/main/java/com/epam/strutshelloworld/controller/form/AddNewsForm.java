@@ -23,9 +23,18 @@ public class AddNewsForm extends ActionForm {
     }
     
     public News buildNews() {
+        System.out.println(id);
         News news = new News();
         BeanUtils.copyProperties(this, news);
         return news;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Date getDate() {

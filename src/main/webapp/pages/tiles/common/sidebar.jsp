@@ -1,17 +1,15 @@
-<%-- 
-    Document   : sidebar
-    Created on : Feb 24, 2015, 9:07:31 PM
-    Author     : StasKolodyuk
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+
+<div id="sidebar">
+    <ul>
+        <li>
+            <h2>Menu</h2>
+            <ul>
+                <li><html:link forward="showNewsListPage">Show News List</html:link></li>
+                <li><html:link forward="addNewsPage">Add News</html:link></li>
+            </ul>
+        </li>
+    </ul>
+</div>

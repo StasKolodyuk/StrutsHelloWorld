@@ -9,6 +9,9 @@ public interface INewsManager {
     
     void addNews(News news);
     void updateNews(News news);
-    List<News> getAllNews();
+    void deleteNews(long id);
+    void deleteNewsList(long[] ids);
+    News findNews(long id);
+    List<News> findAllNews();
     
 }

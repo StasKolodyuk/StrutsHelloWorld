@@ -3,8 +3,17 @@
 
 <beans>
     
-    <bean name="/gotoCustomerDetails" class="org.apache.struts.actions.ForwardAction"/>
-    <bean name="/addNewsForm" class="com.epam.strutshelloworld.controller.action.AddNewsAction">
+    <bean name="/gotoAddNews" class="org.apache.struts.actions.ForwardAction"/>
+    <bean name="/gotoShowNewsList" class="com.epam.strutshelloworld.controller.action.ShowNewsListAction">
+        <property name="newsManager" ref="newsManager" />
+    </bean>
+    <bean name="/submitSaveNewsForm" class="com.epam.strutshelloworld.controller.action.NewsAction">
+        <property name="newsManager" ref="newsManager" />
+    </bean>
+    <bean name="/submitNewsForm" class="com.epam.strutshelloworld.controller.action.NewsAction">
+        <property name="newsManager" ref="newsManager" />
+    </bean>
+    <bean name="/submitDeleteNewsListForm" class="com.epam.strutshelloworld.controller.action.DeleteNewsListAction">
         <property name="newsManager" ref="newsManager" />
     </bean>
     

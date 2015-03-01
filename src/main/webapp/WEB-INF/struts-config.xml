@@ -5,27 +5,53 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="addNewsForm" type="com.epam.strutshelloworld.controller.form.AddNewsForm"/>
+        <form-bean name="addNewsForm" type="com.epam.strutshelloworld.controller.form.AddNewsForm" />
+        <form-bean name="singleIdForm" type="com.epam.strutshelloworld.controller.form.SingleIdForm" />
+        <form-bean name="multipleIdForm" type="com.epam.strutshelloworld.controller.form.MultipleIdForm" />
     </form-beans>
     <global-forwards>
-        <forward name="mainpage" path="/index.jsp" />
-        <forward name="customerDetailsPage" path="/gotoCustomerDetails.do" /> 
+        <forward name="indexPage" path="/index.jsp" />
+        <forward name="addNewsPage" path="/gotoAddNews.do" />
+        <forward name="showNewsListPage" path="/gotoShowNewsList.do" />
     </global-forwards>
+    
     <action-mappings>
-        <action path="/gotoCustomerDetails" 
-              parameter="/addNews.page"  
-              type="org.apache.struts.actions.ForwardAction" /> 
         
-        <action path="/addNewsForm"
-            type="com.epam.strutshelloworld.controller.action.AddNewsAction"
-            name="addNewsForm"
-            scope="request"
-            validate="true"
-            input="success">
-            <set-property property="cancellable" value="true"/>
-            <forward name="success" path="/pages/success.jsp" />
-            <forward name="failure" path="/pages/failure.jsp" />
+        <action path="/gotoAddNews"
+                parameter="/addNews.page"  
+                type="org.apache.struts.actions.ForwardAction" /> 
+        
+        <action path="/submitSaveNewsForm"
+                type="com.epam.strutshelloworld.controller.action.NewsAction"
+                name="addNewsForm"
+                scope="request"
+                validate="true"
+                parameter="action"
+                cancellable="true" />
+        
+        <action path="/gotoShowNewsList"
+                type="com.epam.strutshelloworld.controller.action.ShowNewsListAction"
+                scope="request">
+            <forward name="showNewsListPage"   
+                     path="/showNewsList.page" />
         </action>
+        
+        <action path="/submitNewsForm"
+                type="com.epam.strutshelloworld.controller.action.NewsAction"
+                name="singleIdForm"
+                scope="request"
+                validate="true"
+                parameter="action">
+            <forward name="showNewsPage"   
+                     path="/showNews.page" />
+        </action>
+        
+        <action path="/submitDeleteNewsListForm"
+                type="com.epam.strutshelloworld.controller.action.DeleteNewsListAction"
+                name="multipleIdForm"
+                scope="request"
+                validate="true"
+                parameter="action"/>
         
     </action-mappings>
     <controller>
