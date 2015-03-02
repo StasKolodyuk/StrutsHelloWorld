@@ -10,13 +10,13 @@
     <html:form action="/submitNewsForm">
         <div class="post">
             <h2 class="title">${news.title}</h2>
-            <p class="meta"><span class="posted">Posted on <strong><fmt:formatDate value="${news.date}" type="date" dateStyle="short" /></strong></span></p>
+            <p class="meta"><span class="posted"><bean:message key="label.posted" /> <strong><fmt:formatDate value="${news.date}" type="date" dateStyle="short" /></strong></span></p>
             <div style="clear: both;">&nbsp;</div>
             <div class="entry">
                 <p>${news.brief}</p>
                 <html:hidden property="id" value="${news.id}"/>
-                <html:submit styleClass="submit" property="action" value="view" />
-                <html:submit styleClass="submit" property="action" value="edit" />
+                <html:submit styleClass="submit" property="action"><bean:message key="button.view" /></html:submit>
+                <html:submit styleClass="submit" property="action"><bean:message key="button.edit" /></html:submit>
                 <input type="checkbox" class="checkbox" name="id" value="${news.id}" form="deleteNewsForm" />
             </div>
         </div>
@@ -24,6 +24,6 @@
 </logic:iterate>
 <div style="clear: both;">&nbsp;</div>
 <html:form action="/submitDeleteNewsListForm" styleId="deleteNewsForm" method="post">
-    <html:submit styleClass="submit" property="action" value="delete" />
+    <html:submit styleClass="submit"><bean:message key="button.deleteChecked" /></html:submit>
 </html:form>
 <div style="clear: both;">&nbsp;</div>

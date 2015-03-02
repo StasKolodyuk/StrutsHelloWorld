@@ -3,6 +3,7 @@
 
 <beans>
     
+    <bean name="/changeLanguage" class="com.epam.strutshelloworld.controller.action.ChangeLanguageAction" />
     <bean name="/gotoAddNews" class="org.apache.struts.actions.ForwardAction"/>
     <bean name="/gotoShowNewsList" class="com.epam.strutshelloworld.controller.action.ShowNewsListAction">
         <property name="newsManager" ref="newsManager" />

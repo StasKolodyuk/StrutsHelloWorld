@@ -17,6 +17,10 @@
     
     <action-mappings>
         
+        <action path="/changeLanguage"
+                type="com.epam.strutshelloworld.controller.action.ChangeLanguageAction"
+                scope="request" />
+        
         <action path="/gotoAddNews"
                 parameter="/addNews.page"  
                 type="org.apache.struts.actions.ForwardAction" /> 
@@ -58,7 +62,7 @@
         <set-property property="processorClass"
                 value="org.springframework.web.struts.DelegatingTilesRequestProcessor"/>
     </controller>
-    <message-resources parameter="messages"/>
+    <message-resources parameter="messages" />
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn"/>
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config"  

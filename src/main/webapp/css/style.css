@@ -81,7 +81,7 @@ a:hover {
 #logo h1 {
 	margin: 0px;
 	padding: 0px;
-	text-transform: lowercase;
+	text-transform: none;
 	font-size: 3.8em;
 	color: #589DAC;
 }
@@ -103,6 +103,11 @@ a:hover {
 	background: none;
 	text-decoration: none;
 	color: #589DAC;
+}
+
+#logo .language {
+    color:whitesmoke;
+    margin: 10px;
 }
 
 /* Search */

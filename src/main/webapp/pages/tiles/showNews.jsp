@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html:form action="/submitNewsForm">
@@ -11,8 +12,8 @@
         <div class="entry">
             <p>${news.content}</p>
             <html:hidden property="id" value="${news.id}" />
-            <html:submit styleClass="submit" property="action" value="edit" />
-            <html:submit styleClass="submit" property="action" value="delete" />
+            <html:submit styleClass="submit" property="action"><bean:message key="button.edit" /></html:submit>
+            <html:submit styleClass="submit" property="action"><bean:message key="button.delete" /></html:submit>
         </div>
     </div>
 </html:form>
